@@ -7,7 +7,7 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
-    animation: background-color-change 5s infinite alternate;
+    margin: 0;
 }
 
 #overlay {
@@ -16,7 +16,6 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
     display: none;
 }
 
@@ -26,28 +25,72 @@ body {
     justify-content: center;
 }
 
+#overlay-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://media.tenor.com/OdehztbrpecAAAAC/anime-falling.gif');
+    background-repeat: repeat;
+    opacity: 0.6;
+}
+
 #overlay-text {
     font-size: 24px;
-    animation: text-color-change 5s infinite alternate;
+    color: white;
+    animation: balance 1s infinite, shine 2s infinite;
+    position: relative;
+    z-index: 1;
 }
 
-@keyframes background-color-change {
-    0% { background-color: black; }
-    100% { background-color: white; }
+@keyframes balance {
+    0%, 100% {
+        transform: rotate(-10deg);
+    }
+    50% {
+        transform: rotate(10deg);
+    }
 }
 
-@keyframes text-color-change {
-    0% { color: white; }
-    100% { color: black; }
+@keyframes shine {
+    0% {
+        text-shadow: 0 0 0.2em white, 0 0 0.4em white;
+    }
+    50% {
+        text-shadow: 0 0 0.8em white, 0 0 1.2em white;
+    }
+    100% {
+        text-shadow: 0 0 0.2em white, 0 0 0.4em white;
+    }
 }
 
-#discord-icon {
-    margin-top: 10px;
+#social-icons {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+}
+
+.social-icon {
+    margin-right: 10px;
     color: white;
     text-decoration: none;
     font-size: 24px;
+    animation: shake 1s infinite;
 }
 
-#discord-icon:hover {
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    10%, 30%, 50%, 70%, 90% {
+        transform: translateX(-2px);
+    }
+    20%, 40%, 60%, 80% {
+        transform: translateX(2px);
+    }
+}
+
+.social-icon:hover {
     color: #7289DA;
 }
